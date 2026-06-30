@@ -5,120 +5,103 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
 
 @font-face {
-    font-family: "Ardeco";
-    src: url("fonts/Ardeco.ttf");
+  font-family: "Ardeco";
+  src: url("fonts/Ardeco.ttf");
 }
-
 
 /* ===========================
    Reset
 =========================== */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
+  font-family: "Montserrat", sans-serif;
 
-    font-family: "Montserrat", sans-serif;
+  background: #efe7d6;
 
-    background: #efe7d6;
-
-    color: #3d2a14;
-
+  color: #3d2a14;
 }
-
 
 /* ===========================
    Container
 =========================== */
 
 .container {
+  width: min(100%, 950px);
 
-    width: min(100%, 950px);
+  margin: auto;
 
-    margin: auto;
-
-    padding: 30px 20px 60px;
-
+  padding: 30px 20px 60px;
 }
-
 
 /* ===========================
    Header
 =========================== */
 
 header {
+  text-align: center;
 
-    text-align: center;
-
-    margin-bottom: 25px;
-
+  margin-bottom: 25px;
 }
 
 .logo {
+  font-family: "Ardeco";
 
-    font-family: "Ardeco";
+  font-size: 72px;
 
-    font-size: 72px;
+  font-weight: normal;
 
-    font-weight: normal;
+  color: #3a2815;
 
-    color: #3a2815;
-
-    line-height: 1;
-
+  line-height: 1;
 }
 
 .subtitle {
+  margin-top: 8px;
 
-    margin-top: 8px;
+  font-size: 15px;
 
-    font-size: 15px;
+  letter-spacing: 7px;
 
-    letter-spacing: 7px;
-
-    color: #6d5435;
-
+  color: #6d5435;
 }
-
 
 /* ===========================
    Sticky Panel
 =========================== */
 
 .top-panel {
+  position: sticky;
 
-    position: sticky;
+  top: 0;
 
-    top: 0;
+  z-index: 999;
 
-    z-index: 999;
+  background: rgba(239, 231, 214, 0.96);
 
-    background: rgba(239,231,214,.96);
+  backdrop-filter: blur(12px);
 
-    backdrop-filter: blur(12px);
+  padding: 18px 0;
 
-    padding: 18px 0;
+  display: flex;
 
-    display: flex;
+  justify-content: space-between;
 
-    justify-content: space-between;
+  align-items: center;
 
-    align-items: center;
+  gap: 20px;
 
-    gap: 20px;
-
-    margin-bottom: 30px;
-
+  margin-bottom: 30px;
 }
-
 
 /* ===========================
    Groups
@@ -126,255 +109,214 @@ header {
 
 .menu-switch,
 .language-switch {
+  display: flex;
 
-    display: flex;
-
-    gap: 12px;
-
+  gap: 12px;
 }
-
 
 /* ===========================
    Buttons
 =========================== */
 
 button {
+  border: none;
 
-    border: none;
+  cursor: pointer;
 
-    cursor: pointer;
+  transition: 0.25s;
 
-    transition: .25s;
-
-    font-family: inherit;
-
+  font-family: inherit;
 }
-
 
 /* ===========================
    Menu Buttons
 =========================== */
 
 .menu-btn {
+  padding: 13px 24px;
 
-    padding: 13px 24px;
+  border-radius: 30px;
 
-    border-radius: 30px;
+  background: white;
 
-    background: white;
+  color: #4c341d;
 
-    color: #4c341d;
+  font-size: 14px;
 
-    font-size: 14px;
+  font-weight: 600;
 
-    font-weight: 600;
-
-    border: 2px solid #ccb48d;
-
+  border: 2px solid #ccb48d;
 }
 
 .menu-btn:hover {
+  transform: translateY(-2px);
 
-    transform: translateY(-2px);
-
-    background: #f8f2e8;
-
+  background: #f8f2e8;
 }
 
 .menu-btn.active {
+  background: #5d4123;
 
-    background: #5d4123;
+  color: white;
 
-    color: white;
-
-    border-color: #5d4123;
-
+  border-color: #5d4123;
 }
-
 
 /* ===========================
    Language Buttons
 =========================== */
 
 .lang-btn {
+  width: 50px;
 
-    width: 50px;
+  height: 50px;
 
-    height: 50px;
+  border-radius: 50%;
 
-    border-radius: 50%;
+  background: white;
 
-    background: white;
+  border: 2px solid #ccb48d;
 
-    border: 2px solid #ccb48d;
+  font-weight: 600;
 
-    font-weight: 600;
-
-    color: #5d4123;
-
+  color: #5d4123;
 }
 
 .lang-btn:hover {
+  transform: translateY(-2px);
 
-    transform: translateY(-2px);
-
-    background: #f8f2e8;
-
+  background: #f8f2e8;
 }
 
 .lang-btn.active {
+  background: #5d4123;
 
-    background: #5d4123;
+  color: white;
 
-    color: white;
-
-    border-color: #5d4123;
-
+  border-color: #5d4123;
 }
-
 
 /* ===========================
    Gallery
 =========================== */
 
 .gallery {
+  display: flex;
 
-    display: flex;
+  flex-direction: column;
 
-    flex-direction: column;
-
-    gap: 30px;
-
+  gap: 30px;
 }
-
 
 /* ===========================
    Images
 =========================== */
 
 .menu-image {
+  width: 100%;
 
-    width: 100%;
+  display: block;
 
-    display: block;
+  border-radius: 18px;
 
-    border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
 
-    box-shadow: 0 15px 35px rgba(0,0,0,.12);
-
-    transition: .3s;
-
+  transition: 0.3s;
 }
 
 .menu-image:hover {
-
-    transform: scale(1.01);
-
+  transform: scale(1.01);
 }
-
 
 /* ===========================
    Animation
 =========================== */
 
 .fade {
-
-    animation: fade .35s ease;
-
+  animation: fade 0.35s ease;
 }
 
 @keyframes fade {
+  from {
+    opacity: 0;
 
-    from {
+    transform: translateY(15px);
+  }
 
-        opacity: 0;
+  to {
+    opacity: 1;
 
-        transform: translateY(15px);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform: translateY(0);
-
-    }
-
+    transform: translateY(0);
+  }
 }
-
 
 /* ===========================
    Mobile
 =========================== */
 
 @media (max-width: 768px) {
+  .container {
+    padding: 15px 12px 40px;
+  }
 
-    .container {
+  .logo {
+    font-size: 56px;
+  }
 
-        padding: 15px 12px 40px;
+  .subtitle {
+    font-size: 12px;
 
-    }
+    letter-spacing: 4px;
+  }
 
-    .logo {
+  .top-panel {
+    flex-direction: column;
 
-        font-size: 56px;
+    align-items: stretch;
+  }
 
-    }
+  .menu-switch,
+  .language-switch {
+    width: 100%;
 
-    .subtitle {
+    justify-content: center;
+  }
 
-        font-size: 12px;
+  .menu-btn {
+    flex: 1;
 
-        letter-spacing: 4px;
+    padding: 12px;
 
-    }
+    font-size: 13px;
+  }
 
-    .top-panel {
+  .lang-btn {
+    width: 46px;
 
-        flex-direction: column;
+    height: 46px;
+  }
 
-        align-items: stretch;
+  .gallery {
+    gap: 18px;
+  }
 
-    }
+  .menu-image {
+    border-radius: 12px;
+  }
+}
 
-    .menu-switch,
-    .language-switch {
+.gallery a {
+  display: block;
+}
 
-        width: 100%;
+.gallery img {
+  display: block;
 
-        justify-content: center;
+  width: 100%;
 
-    }
+  user-select: none;
 
-    .menu-btn {
+  -webkit-user-drag: none;
 
-        flex: 1;
-
-        padding: 12px;
-
-        font-size: 13px;
-
-    }
-
-    .lang-btn {
-
-        width: 46px;
-
-        height: 46px;
-
-    }
-
-    .gallery {
-
-        gap: 18px;
-
-    }
-
-    .menu-image {
-
-        border-radius: 12px;
-
-    }
-
+  touch-action: manipulation;
 }

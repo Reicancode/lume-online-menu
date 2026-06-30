@@ -1,149 +1,127 @@
-// ======================================
-// Elements
-// ======================================
+import PhotoSwipeLightbox from "https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe-lightbox.esm.min.js";
 
 const gallery = document.getElementById("gallery");
 
 const menuButtons = document.querySelectorAll(".menu-btn");
 const langButtons = document.querySelectorAll(".lang-btn");
 
-
-// ======================================
-// Current State
-// ======================================
-
 let currentLanguage = localStorage.getItem("language") || "en";
 let currentMenu = localStorage.getItem("menu") || "menu";
 
+let lightbox;
 
-// ======================================
-// Render Images
-// ======================================
+function createGallery() {
+  gallery.innerHTML = "";
 
-function renderGallery() {
+  for (let i = 1; i <= 2; i++) {
+    const link = document.createElement("a");
 
-    gallery.classList.remove("fade");
+    link.href = `images/${currentLanguage}/${currentMenu}${i}.jpg`;
 
-    void gallery.offsetWidth;
+    link.dataset.pswpWidth = "2480";
+    link.dataset.pswpHeight = "3508";
 
-    gallery.classList.add("fade");
+    const image = document.createElement("img");
 
-    gallery.innerHTML = `
-        <img
-            class="menu-image"
-            src="images/${currentLanguage}/${currentMenu}1.jpg"
-            alt="Menu Page 1"
-            loading="lazy"
-            draggable="false"
-        >
+    image.src = `images/${currentLanguage}/${currentMenu}${i}.jpg`;
 
-        <img
-            class="menu-image"
-            src="images/${currentLanguage}/${currentMenu}2.jpg"
-            alt="Menu Page 2"
-            loading="lazy"
-            draggable="false"
-        >
-    `;
+    image.className = "menu-image";
 
+    image.loading = "lazy";
+
+    image.draggable = false;
+
+    image.alt = `Page ${i}`;
+
+    link.appendChild(image);
+
+    gallery.appendChild(link);
+  }
 }
-
-
-// ======================================
-// Update Buttons
-// ======================================
 
 function updateButtons() {
+  menuButtons.forEach((button) => {
+    button.classList.toggle(
+      "active",
 
-    menuButtons.forEach(button => {
+      button.dataset.menu === currentMenu
+    );
+  });
 
-        button.classList.toggle(
-            "active",
-            button.dataset.menu === currentMenu
-        );
+  langButtons.forEach((button) => {
+    button.classList.toggle(
+      "active",
 
-    });
-
-    langButtons.forEach(button => {
-
-        button.classList.toggle(
-            "active",
-            button.dataset.lang === currentLanguage
-        );
-
-    });
-
+      button.dataset.lang === currentLanguage
+    );
+  });
 }
-
-
-// ======================================
-// Save State
-// ======================================
 
 function saveState() {
+  localStorage.setItem(
+    "language",
 
-    localStorage.setItem("language", currentLanguage);
-    localStorage.setItem("menu", currentMenu);
+    currentLanguage
+  );
 
+  localStorage.setItem(
+    "menu",
+
+    currentMenu
+  );
 }
 
+function reloadGallery() {
+  createGallery();
 
-// ======================================
-// Language
-// ======================================
+  updateButtons();
 
-langButtons.forEach(button => {
+  saveState();
 
-    button.addEventListener("click", () => {
+  if (lightbox) {
+    lightbox.destroy();
+  }
 
-        currentLanguage = button.dataset.lang;
+  lightbox = new PhotoSwipeLightbox({
+    gallery: "#gallery",
 
-        updateButtons();
+    children: "a",
 
-        renderGallery();
+    pswpModule: () =>
+      import(
+        "https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js"
+      ),
+  });
 
-        saveState();
+  lightbox.init();
+}
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+menuButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    currentMenu = button.dataset.menu;
 
+    reloadGallery();
+
+    window.scrollTo({
+      top: 0,
+
+      behavior: "smooth",
     });
-
+  });
 });
 
+langButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    currentLanguage = button.dataset.lang;
 
-// ======================================
-// Menu
-// ======================================
+    reloadGallery();
 
-menuButtons.forEach(button => {
+    window.scrollTo({
+      top: 0,
 
-    button.addEventListener("click", () => {
-
-        currentMenu = button.dataset.menu;
-
-        updateButtons();
-
-        renderGallery();
-
-        saveState();
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
+      behavior: "smooth",
     });
-
+  });
 });
 
-
-// ======================================
-// Initial Load
-// ======================================
-
-updateButtons();
-
-renderGallery();
+reloadGallery();
